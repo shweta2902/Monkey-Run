@@ -81,7 +81,7 @@ function draw() {
   
       if(gameState===PLAY)
       {
-    
+     monkey.changeAnimation("running",monkey_running)
           SurvivalTime=Math.ceil(frameCount/frameRate())
           if (ground.x<0){
                   ground.x = ground.width/2;
@@ -191,5 +191,5 @@ function reset()
   bananaGroup.destroyEach();
   score=0;
   SurvivalTime=0;
-  monkey.changeAnimation("running",monkey_running)
+ 
 }
