@@ -191,5 +191,5 @@ function reset()
   bananaGroup.destroyEach();
   score=0;
   SurvivalTime=0;
-  
+  monkey.changeAnimation("running",monkey_running)
 }
