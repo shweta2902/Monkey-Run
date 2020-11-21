@@ -30,20 +30,20 @@ function setup() {
   
     
   createCanvas(windowWidth,windowHeight)
-  monkey=createSprite(50,width-200,10,50)
+  monkey=createSprite(50,height-50,10,50)
     monkey.addAnimation("running",monkey_running)
   monkey.addAnimation("stop",monkey_stop)
     monkey.scale=0.2
  
   
-    ground=createSprite(0,width-260,400,10);
+    ground=createSprite(0,height-180,400,10);
     ground.addImage(groundImage)
     ground.velocityX=-2;
     ground.scale=2
     
     ground.x = ground.width/2;
   
-    invisibleGround=createSprite(50,width-100,windowWidth,10)
+    invisibleGround=createSprite(50,height-20,windowWidth,10)
   invisibleGround.visible=false;
     monkey.depth=ground.depth+1
   //monkey.setCollider("circle",0,0,100)
@@ -149,7 +149,7 @@ function spawnObstacles()
 {
   if(frameCount%300===0)
     {
-      var obstacle = createSprite(600,width-150,40,10);
+      var obstacle = createSprite(600,height-50,40,10);
       obstacle.velocityX=-4
       obstacle.addImage(obstaceImage);
       obstacle.x=Math.round(random(600,900))
