@@ -92,8 +92,9 @@ function draw() {
        
         //jumping the trex on space key press
         
-        if(keyDown("space") && monkey.y>=100) {
+        if(touches.length > 0 || keyDown("space") && monkey.y>=100) {
               monkey.velocityY = -10;
+           touches=[];
           }
         
           monkey.velocityY = monkey.velocityY + 0.8
