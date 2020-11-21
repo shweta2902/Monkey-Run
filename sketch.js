@@ -29,21 +29,21 @@ function preload(){
 function setup() {
   
     
-  createCanvas(600,400)
-  monkey=createSprite(50,100,10,50)
+  createCanvas(windowWidth,windowHeight)
+  monkey=createSprite(50,width-200,10,50)
     monkey.addAnimation("running",monkey_running)
   monkey.addAnimation("stop",monkey_stop)
     monkey.scale=0.2
  
   
-    ground=createSprite(0,240,400,10);
+    ground=createSprite(0,width-260,400,10);
     ground.addImage(groundImage)
     ground.velocityX=-2;
     ground.scale=2
     
     ground.x = ground.width/2;
   
-    invisibleGround=createSprite(50,400,200,10)
+    invisibleGround=createSprite(50,width-100,windowWidth,10)
   invisibleGround.visible=false;
     monkey.depth=ground.depth+1
   //monkey.setCollider("circle",0,0,100)
@@ -54,25 +54,25 @@ function setup() {
   //monkey.debug=true;
   
   //game over sprite
-    gameOver=createSprite(300,100);
+    gameOver=createSprite(width/2-10,height/2-50);
     gameOver.addImage(gameOverImage)
     gameOver.scale=0.5;
     gameOver.visible=false
   
     //restart sprite
-     restart=createSprite(300,200)
+     restart=createSprite(width/2,height/2)
      restart.addImage(restartImage)
      restart.scale=0.1;
      restart.visible=false;
-  score=0;
-    SurvivalTime=0;
+      score=0;
+      SurvivalTime=0;
   }
 
 function draw() {
   background("white");
   textSize(20);
   fill("black")
-  text("Score:  "+score,450,20)
+  text("Score:  "+score,width-100,20)
   text("Survival Time: "+SurvivalTime,20,20)
   
   console.log(ground.x)
@@ -81,7 +81,7 @@ function draw() {
   
       if(gameState===PLAY)
       {
-     monkey.changeAnimation("running",monkey_running)
+           monkey.changeAnimation("running",monkey_running)
           SurvivalTime=Math.ceil(frameCount/frameRate())
           if (ground.x<0){
                   ground.x = ground.width/2;
@@ -149,7 +149,7 @@ function spawnObstacles()
 {
   if(frameCount%300===0)
     {
-      var obstacle = createSprite(600,360,40,10);
+      var obstacle = createSprite(600,width-150,40,10);
       obstacle.velocityX=-4
       obstacle.addImage(obstaceImage);
       obstacle.x=Math.round(random(600,900))
@@ -167,7 +167,7 @@ function banana()
     {
       var banana = createSprite(600,20,40,10);
       banana.addImage(bananaImage)
-      banana.y=Math.round(random(10,300))
+      banana.y=Math.round(random(10,height-100))
       banana.scale=random(0.08,0.1)
       banana.velocityX=-2;
       banana.lifetime=300;
@@ -185,11 +185,12 @@ function banana()
 function reset()
 {
   gameState=PLAY;
+  
   gameOver.visible=false
   restart.visible=false
   obstaclesGroup.destroyEach();
   bananaGroup.destroyEach();
   score=0;
   SurvivalTime=0;
- 
+  
 }
