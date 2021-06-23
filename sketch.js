@@ -36,7 +36,7 @@ function setup() {
     monkey.scale=0.2
  
   
-    ground=createSprite(0,height-180,400,10);
+    ground=createSprite(0,height-180,width,10);
     ground.addImage(groundImage)
     ground.velocityX=-2;
     ground.scale=2
